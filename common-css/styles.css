@@ -242,7 +242,12 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 .menu-nav-icon{ display: none; height: 60px; width: 50px; text-align: center; line-height: 60px; cursor: pointer; 
 	font-size: 1.8em; }
 
-	
+img.sm-logo {
+	max-height:150px;
+	max-width:150px;
+	height:auto;
+	width:auto;
+}
 	
 /* ---------------------------------
 4. SLIDER
