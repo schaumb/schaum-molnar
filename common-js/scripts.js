@@ -54,7 +54,7 @@ function toggleVisible() {
 
 function countdownTime(){
 	if(isExists('#clock')){
-		date = Date.parse('12 August 2023 16:00:00 GMT+0200')
+		date = Date.parse('12 August 2023 14:00:00 GMT+0200')
 		$('#clock').countdown(date, function(event){
 			var $this = $(this).html(event.strftime(''
 				+ '<div class="time-sec"><span class="title">%w</span> hét </div>'
