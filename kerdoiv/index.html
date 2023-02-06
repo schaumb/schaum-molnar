@@ -14,13 +14,20 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       try {
-        doc = document.getElementsByTagName('iframe')[0].contentWindow.document
-        doc.addEventListener('DOMContentLoaded', () => {
-          ff = doc.getElementsByClassName('formFooter')
-          if (ff.length > 0) {
-            ff[0].remove();
-          }
+        ifr = document.getElementsByTagName('iframe')[0]
+        add_formfooter_deleter = () => {
+          doc = ifr.contentWindow.document
+          st = doc.createElement('style')
+          st.innerText = '.formFooter { visibility: hidden !important; }'
+          doc.head.appendChild(st)
+        }
+
+        ifr.addEventListener('load', () => {
+          ifr.contentWindow.addEventListener('unload', () => {
+            setTimeout(add_formfooter_deleter, 100);
+          })
         })
+        add_formfooter_deleter()
       } catch (error) {
         
       }
