@@ -11,6 +11,21 @@
     }
   </style>
   <script type="text/javascript" src="https://form.jotform.com/jsform/230112757767055"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        doc = document.getElementsByTagName('iframe')[0].contentWindow.document
+        doc.addEventListener('DOMContentLoaded', () => {
+          ff = doc.getElementsByClassName('formFooter')
+          if (ff.length > 0) {
+            ff[0].remove();
+          }
+        })
+      } catch (error) {
+        
+      }
+    })
+  </script>
 </head>
 <body>
 </body>
