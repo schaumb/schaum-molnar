@@ -123,7 +123,7 @@ b.light-color{ color: #444; }
 .section .heading .heading-bottom{ margin-top: 20px; display: inline-block; width: 160px; height: 20px; 
 	line-height: 20px; position: relative; }
 
-.section .heading .heading-bottom .icon{ position: absolute; left: 50%; top: 50%; margin: -9px 0 0 -9px; color: #f4d4a1; }
+.section .heading .heading-bottom .icon{ position: absolute; left: 50%; top: 50%; margin: -9px 0 0 -9px; color: #BE914F; }
 	
 .section .heading .heading-bottom:after{ content:''; position: absolute; left: 0; top: 50%; margin-top: -.5px;
 	height: 1px; width: 60px; background: #aaa; }

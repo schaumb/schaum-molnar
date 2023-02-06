@@ -54,9 +54,11 @@ function toggleVisible() {
 
 function countdownTime(){
 	if(isExists('#clock')){
-		$('#clock').countdown('2023/08/12', function(event){
+		date = Date.parse('12 August 2023 16:00:00 GMT+0200')
+		$('#clock').countdown(date, function(event){
 			var $this = $(this).html(event.strftime(''
-				+ '<div class="time-sec"><span class="title">%D</span> nap </div>'
+				+ '<div class="time-sec"><span class="title">%w</span> hét </div>'
+				+ '<div class="time-sec"><span class="title">%d</span> nap </div>'
 				+ '<div class="time-sec"><span class="title">%H</span> óra </div>'
 				+ '<div class="time-sec"><span class="title">%M</span> perc </div>'
 				+ '<div class="time-sec"><span class="title">%S</span> másodperc </div>'));
