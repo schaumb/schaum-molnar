@@ -357,12 +357,14 @@ img.sm-logo {
 
 .contact-area{ position: relative; overflow: hidden; box-shadow: 1px 10px 40px rgba(0,0,0,.4); }
 
-.contact-area .contact-wrapper{ width: 50%; }
+.contact-area .contact-wrapper{ width: 33%; }
 
-.contact-area .map-area{ width: 50%; position: absolute; top: 0; bottom: 0; right: 0; }
-
+.contact-area .map-area-1{ width: 30%; position: absolute; top: 0; bottom: 0; right: 33%; }
+.contact-area .map-area-2{ width: 30%; position: absolute; top: 0; bottom: 0; right: 0; }
 
 .contact-area .phone{ margin: 10px 0; font-size: 2em; color: #BE914F; }
+
+.contact-area iframe { width: 100%; }
 
 
 /* ---------------------------------

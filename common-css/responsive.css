@@ -117,7 +117,8 @@
 	
 	.contact-area .contact-wrapper{ width: 100%; float: none!important; }
 
-	.contact-area .map-area{ height: 400px; width: 100%; position: static; }
+	.contact-area .map-area-1{ height: 400px; width: 100%; position: static; }
+	.contact-area .map-area-2{ height: 400px; width: 100%; position: static; }
 
 
 
