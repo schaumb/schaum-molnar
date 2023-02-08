@@ -248,6 +248,15 @@ img.sm-logo {
 	height:auto;
 	width:auto;
 }
+
+#filledModal .modal-content {
+	background: #BE914F;
+	color: #F4D4A1;
+}
+
+#filledModal .modal-header {
+	border-bottom: 0px
+}
 	
 /* ---------------------------------
 4. SLIDER
