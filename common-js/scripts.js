@@ -65,13 +65,19 @@ function toggleVisible() {
 function countdownTime(){
 	if(isExists('#clock')){
 		date = Date.parse('12 August 2023 14:00:00 GMT+0200')
-		$('#clock').countdown(date, function(event){
-			var $this = $(this).html(event.strftime(''
-				+ '<div class="time-sec"><span class="title">%w</span> hét </div>'
-				+ '<div class="time-sec"><span class="title">%d</span> nap </div>'
-				+ '<div class="time-sec"><span class="title">%H</span> óra </div>'
-				+ '<div class="time-sec"><span class="title">%M</span> perc </div>'
-				+ '<div class="time-sec"><span class="title">%S</span> másodperc </div>'));
+		$('#clock').countdown(date, {elapse: true})
+			.on('update.countdown', function(event) {
+			var ms = event.finalDate.getTime() / 1000;
+			var fromDate = luxon.DateTime.fromSeconds(ms);
+			var diff = luxon.DateTime.fromSeconds(ms + event.offset['totalSeconds'])
+				.diff(fromDate, ['years', 'months', 'days', 'hours', 'minutes', 'seconds']).toObject();
+			var $this = $(this).html(''
+				+ '<div class="time-sec"><span class="title">' + diff['years'] + '</span> év </div>'
+				+ '<div class="time-sec"><span class="title">' + diff['months'] + '</span> hónap </div>'
+				+ '<div class="time-sec"><span class="title">' + diff['days'] + '</span> nap </div>'
+				+ '<div class="time-sec"><span class="title">' + diff['hours'] + '</span> óra </div>'
+				+ '<div class="time-sec"><span class="title">' + diff['minutes'] + '</span> perc </div>'
+				+ '<div class="time-sec"><span class="title">' + diff['seconds'] + '</span> másodperc </div>');
 		});
 	}
 }
