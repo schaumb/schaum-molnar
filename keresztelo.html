@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keresztelői Meghívó</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #FAF7F2;
+      --sky:      #C8DFF0;
+      --blue:     #6A9FC0;
+      --deepblue: #2E5F80;
+      --gold:     #C8A96E;
+      --lilac:    #D6C9E0;
+      --text:     #2C3A47;
+      --light:    #7A8C9A;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bloom {
+      0%   { transform: scale(0.7) rotate(-10deg); opacity: 0; }
+      60%  { transform: scale(1.05) rotate(2deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.35; }
+      50%       { opacity: 0.65; }
+    }
+
+    body {
+      background: var(--sky);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lato', sans-serif;
+      padding: 32px 16px;
+    }
+
+    .card {
+      background: var(--cream);
+      width: 480px;
+      max-width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 48px rgba(46,95,128,0.18), 0 2px 8px rgba(46,95,128,0.1);
+      animation: fadeUp 0.9s ease both;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: var(--deepblue);
+      padding: 48px 40px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 120%, rgba(200,169,110,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Cross ornament */
+    .cross-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      animation: bloom 1.1s cubic-bezier(.34,1.56,.64,1) 0.3s both;
+    }
+    .cross {
+      position: relative;
+      width: 44px;
+      height: 44px;
+    }
+    .cross::before, .cross::after {
+      content: '';
+      position: absolute;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .cross::before { /* vertical */
+      width: 6px;
+      height: 44px;
+      left: 50%; top: 0;
+      transform: translateX(-50%);
+    }
+    .cross::after { /* horizontal */
+      width: 44px;
+      height: 6px;
+      top: 30%; left: 0;
+      transform: translateY(-50%);
+    }
+    /* decorative ring around cross */
+    .cross-ring {
+      position: absolute;
+      width: 64px; height: 64px;
+      border: 1.5px solid rgba(200,169,110,0.45);
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    .eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      animation: fadeUp 0.8s ease 0.5s both;
+    }
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 42px;
+      line-height: 1.1;
+      color: #fff;
+      letter-spacing: 0.02em;
+      animation: fadeUp 0.8s ease 0.6s both;
+    }
+    .header h1 em {
+      font-style: italic;
+      color: var(--sky);
+    }
+    .header-sub {
+      margin-top: 10px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: rgba(200,223,240,0.8);
+      animation: fadeUp 0.8s ease 0.75s both;
+    }
+
+    /* gold divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 40px;
+      margin: 28px 0;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .divider-dot {
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+
+    /* ── Body ── */
+    .body {
+      padding: 0 40px 40px;
+      animation: fadeUp 0.8s ease 0.8s both;
+    }
+
+    .date-block {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .date-block .date-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--deepblue);
+      letter-spacing: 0.03em;
+    }
+    .date-block .date-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      color: var(--light);
+      font-weight: 300;
+    }
+
+    /* ── Program timeline ── */
+    .program-title {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .timeline {
+      list-style: none;
+      position: relative;
+      padding-left: 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 46px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--lilac), var(--blue), var(--lilac));
+    }
+
+    .tl-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-bottom: 18px;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+
+    .tl-time {
+      width: 46px;
+      flex-shrink: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--deepblue);
+      padding-top: 2px;
+      text-align: right;
+      padding-right: 0;
+    }
+
+    .tl-dot-wrap {
+      width: 30px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      padding-top: 7px;
+    }
+    .tl-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid var(--blue);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .tl-dot.highlight {
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(200,169,110,0.22);
+    }
+
+    .tl-content {
+      flex: 1;
+      padding-top: 0;
+    }
+    .tl-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .tl-label.highlight {
+      color: var(--deepblue);
+      font-size: 18px;
+    }
+    .tl-desc {
+      font-size: 12.5px;
+      color: var(--light);
+      font-weight: 300;
+      margin-top: 2px;
+      line-height: 1.5;
+    }
+    .tl-addr {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+      font-size: 11.5px;
+      color: var(--blue);
+      font-weight: 400;
+    }
+    .tl-addr svg {
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--deepblue);
+      padding: 22px 40px;
+      text-align: center;
+    }
+    .footer-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: rgba(200,223,240,0.75);
+      line-height: 1.6;
+    }
+    .footer-quote {
+      font-size: 13px;
+      color: rgba(200,169,110,0.7);
+      margin-top: 6px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .card { box-shadow: none; }
+    }
+    @media (max-width: 520px) {
+      .header { padding: 36px 24px 28px; }
+      .body { padding: 0 24px 32px; }
+      .footer { padding: 18px 24px; }
+      .divider { padding: 0 24px; }
+      .header h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="header">
+      <div class="cross-wrap">
+        <div class="cross">
+          <div class="cross-ring"></div>
+        </div>
+      </div>
+      <p class="eyebrow">Szeretettel meghívunk</p>
+      <h1>Keresztelő<br><em>ünnepségünkre</em></h1>
+      <p class="header-sub">Örömmel várunk benneteket</p>
+    </div>
+
+    <div class="body">
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="date-block">
+        <div class="date-big">2026. július 26.</div>
+        <div class="date-year">vasárnap</div>
+      </div>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-line"></div>
+      </div>
+
+      <p class="program-title">A nap programja</p>
+
+      <ul class="timeline">
+        <li class="tl-item">
+          <span class="tl-time">10:00</span>
+          <div class="tl-dot-wrap"><div class="tl-dot highlight"></div></div>
+          <div class="tl-content">
+            <div class="tl-label highlight">Keresztelés &amp; Istentisztelet</div>
+            <div class="tl-desc">A keresztelés az istentisztelet elején, 11:00-ig</div>
+            <div class="tl-addr">
+              <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 0C3.015 0 1 2.015 1 4.5c0 3.375 4.5 8.5 4.5 8.5s4.5-5.125 4.5-8.5C10 2.015 7.985 0 5.5 0zm0 6.125A1.625 1.625 0 1 1 5.5 2.875a1.625 1.625 0 0 1 0 3.25z" fill="#6A9FC0"/></svg>
+              Budapest XII., Kék golyó utca 17.
+            </div>
+          </div>
+        </li>
+
+        <li class="tl-item">
+          <span class="tl-time">11:00</span>
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-label">Fotózkodás</div>
+            <div class="tl-desc">A templom előtt, közösen</div>
+          </div>
+        </li>
+
+        <li class="tl-item">
+          <span class="tl-time">12:00</span>
+          <div class="tl-dot-wrap"><div class="tl-dot highlight"></div></div>
+          <div class="tl-content">
+            <div class="tl-label highlight">Ünnepi ebéd</div>
+            <div class="tl-desc">Jégbüfé — asztalfoglalással várunk</div>
+            <div class="tl-addr">
+              <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 0C3.015 0 1 2.015 1 4.5c0 3.375 4.5 8.5 4.5 8.5s4.5-5.125 4.5-8.5C10 2.015 7.985 0 5.5 0zm0 6.125A1.625 1.625 0 1 1 5.5 2.875a1.625 1.625 0 0 1 0 3.25z" fill="#6A9FC0"/></svg>
+              Budapest II., Fény utca 15.
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p class="footer-text">Örömmel várunk benneteket ezen a különleges napon,<br>hogy együtt ünnepeljük gyermekünk keresztelőjét.</p>
+      <p class="footer-quote">„Hagyjátok hozzám jönni a gyermekeket."</p>
+    </div>
+
+  </div>
+</body>
+</html>
